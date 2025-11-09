@@ -54,3 +54,8 @@ Si prepara una lista di frame, già inviati, grande $K$. Quella lista sarà la l
 ##### Funzionamento
 Per ogni frame inviata aumenta di 1 il bordo superiore della finestra di invio (UWE, *upper window edge*), analogamente quando viene ricevuta la conferma di ricezione per una frame si riduce di 1 il limite inferiore della finestra di invio (LWE, *lower window edge*).
 Quando la differenza fra UWE e LWE raggiunge il valore di $K$, allora P entra nello stato di ritrasmissione.
+
+> #### Gli identificatori
+> Per poter identificare correttamente le frame inviate in una determinata finestra di grandezza $K$ si procede, in base alla stradegia utilizzata, come segue:
+> - **Go-back-N**: si utilizzano almeno $K+1$ identificatori. Per spiegarlo immaginiamo che il secondario mandi solo ACK danneggiate, in questo modo può "capire" meglio se arrivano frame duplicati o nuovi.
+> - **ripetizione selettiva**: in questo caso si devono usare non meno di $2K$ identificatori. Come prima supponiamo che il secondario mandi solo frame danneggiate, lìunico modo che ha per capirlo è ricevere nuovi frame con nuovi identificatori (la nuova finestra).
