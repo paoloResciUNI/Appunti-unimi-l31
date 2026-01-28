@@ -413,7 +413,7 @@ Domande tutor:
 
 __Promosso__ (26+3+6=28)
 
-## Martedì 14 febbraio 
+## Martedì 14 febbraio 2023
 
 ### Primo
 
@@ -489,66 +489,27 @@ __Promosso__
 ### Ottavo 
 - Cos'è il GDPR?
 
-## Orali 2025/01/27:
-
-1. (30L)
-- STRIDE; come lo spiegherebbe a un amico che ha appena sviluppato un'app?
-- Come protegge un'app da spoofing? Controindicazioni multi-factor?
-- POW
-- Tutor: Pen testing; qual è la prima operazione? (port scan, cosa fa?)
-
-2. (28)
-- SUID; come lo implementa? se in un programma con suid faccio fork che uid ha il programma forkato?
-- cos'è l'autorizzazione
-- Tutor: XSS
-
-3. (Bocciato) 
-- Auditing; come si chiamano in windows i file di log? problematiche dei file di log? dove vanno? chi fa l'analisi?
-- TLS
-- TOCTOU
-- Tutor: john the ripper; come funziona senza fare bruteforce?
-
-4.
-- Mitnick Attack su lavagna
-- E2E encryption; protocolli (mtproto, signal); alternativa a DH usata e perchè (i due host nelle app di messaggistica non sono per forza online contemporaneamente)
-- Tutor: TOR
-
-5. (25)
-- Cosa significa approcio risk-based? (risk management)
-- proprietà di un sistema sicuro (le 6)
-- data origin authentication
-- accountability
-- difese da bufferoverflow
-- Tutor: SQL Injection; contromisure; esempio semplice ed esempio complicato
-
-6. (26)
-- Repudiation
-- Firma digitale
-- MAC
-- Integer overflow, perchè succede, come evitarlo, esempio di codice
-- Tutor: come fare uno shell code con buffer overflow se vi è stack/heap non eseguibile
-
-## Orali 17 Gennaio
+## Orali 17 Gennaio 2024
 
 ### Orali mattino
 #### Primo orale (Andrea)
 
 1. Come garantire l’integrità dell’informazione?
-  a. Cosa vuol dire integrità? → Definizione
-  b. Cosa vuol dire confidenzialità? → Definizione
-  c. Come so se un file è integro? → Valore di hash
-  i. Che cos’è un valore di hash?
-  ii. Che cos’è una funzione hash?
-  iii. Per cosa usiamo la funzione di hash? → Per verificare l’integrità del messaggio)
+    a. Cosa vuol dire integrità? → Definizione
+    b. Cosa vuol dire confidenzialità? → Definizione
+    c. Come so se un file è integro? → Valore di hash
+    i. Che cos’è un valore di hash?
+    ii. Che cos’è una funzione hash?
+    iii. Per cosa usiamo la funzione di hash? → Per verificare l’integrità del messaggio)
 2. Cosa sono le race condition?
-  a. Creano problemi di sicurezza? → Sì, TOCTOU attack
-  b. Come funziona l’attacco TOCTOU?
-  i. Perchè viene usata la cartella dev/null nell’esempio visto a lezione, e come la
-  usiamo?
+    a. Creano problemi di sicurezza? → Sì, TOCTOU attack
+    b. Come funziona l’attacco TOCTOU?
+    i. Perchè viene usata la cartella dev/null nell’esempio visto a lezione, e come la
+    usiamo?
 3. Che metodi abbiamo visto per capire che porte sono aperte in un host remoto?
-  a. Perchè cerchiamo di capire che porte sono aperte?
-  b. Che valori ritorna la scansione?
-  c. Nome del programma che usiamo? → Nmap
+    a. Perchè cerchiamo di capire che porte sono aperte?
+    b. Che valori ritorna la scansione?
+    c. Nome del programma che usiamo? → Nmap
 
 #### Secondo orale
 
@@ -568,20 +529,20 @@ a. Salting per permette di avere la stessa password a più utenti
 #### Terzo orale
 
 1. Cosa si intende per autenticazione e autorizzazione? (solo autenticazione)?
-  a. Chi implementa il processo di autorizzazione? → reference monitor
-  i. Chi definisce l’access control matrix?
-  ii. Dove sono memorizzate le ACL? Chi le mette? → DAC e MAC
+    a. Chi implementa il processo di autorizzazione? → reference monitor
+    i. Chi definisce l’access control matrix?
+    ii. Dove sono memorizzate le ACL? Chi le mette? → DAC e MAC
 2. Che cos’è un ransomware?
-  a. Come cifra i file?
-  i. Dove salva la chiave?
-  ii. Qual è il problema di usare la chiave simmetrica?
+    a. Come cifra i file?
+    i. Dove salva la chiave?
+    ii. Qual è il problema di usare la chiave simmetrica?
 3. In che contesto parliamo di attacchi XSS?
-  a. Differenza tra stored e reflected?
+    a. Differenza tra stored e reflected?
 
 #### Quarto orale 
 
 1. Che cos’è uno stack frame?
-  a. Che cosa c’è all’interno?
+    a. Che cosa c’è all’interno?
 
   b. Come facciamo un buffer overflow?
   c. Chi decide quali dati vanno sullo stack e quali no?
@@ -591,8 +552,8 @@ a. Salting per permette di avere la stessa password a più utenti
   g. Che vulnerabilità si usano per fare un buffer overflow?
 
 2. Cos’è una SIEM?
-  a. Quali sono gli input?
-  b. Dispostivi che usano i loro log?
+    a. Quali sono gli input?
+    b. Dispostivi che usano i loro log?
 
 3. Come funziona il protocollo TOR?
 
@@ -619,35 +580,35 @@ a. Rainbow table, differenza con attacchi dizionario
 #### Secondo orale
 
 1. Che cos’è una PKI?
-  a. Come avviene la verifica di una firma digitale?
-  b. Chi garantisce la validità delle chiavi pubbliche rilasciate dalle certification autority?
-  c. Perchè si firma l’hash e non il documento?
+    a. Come avviene la verifica di una firma digitale?
+    b. Chi garantisce la validità delle chiavi pubbliche rilasciate dalle certification autority?
+    c. Perchè si firma l’hash e non il documento?
 2. Tecniche di evasion usate dai creatori di malware per sfuggire agli antivirus?
-  a. Qual è il problema di criptare l’intero virus?
+    a. Qual è il problema di criptare l’intero virus?
 3. Come funziona TOR?
-  a. Come avviene lo scambio di chiavi?
-  b. Ci sono problematiche con TOR? → Nell’uso quotidiano è più lento
+    a. Come avviene lo scambio di chiavi?
+    b. Ci sono problematiche con TOR? → Nell’uso quotidiano è più lento
 
 #### Terzo orale
 
 1. he cos’è l’integer overflow?
-  a. Come generiamo un integer overflow?
-  b. Quale vulnerabilità viene sfruttata per questo attacco?
-  i. Perchè non viene fatto il controllo di questa vulnerabilità?
+    a. Come generiamo un integer overflow?
+    b. Quale vulnerabilità viene sfruttata per questo attacco?
+    i. Perchè non viene fatto il controllo di questa vulnerabilità?
 2. Contromisure per il memory errors? → Ad esempio canarino o stack non eseguibile
-  a. Come rendere lo stack non eseguibile? → Read to libc (?)
-  b. Dove l’attaccante mette il codice da usare?
-  c. Come so se ho sovrascritto il codice da usare?
+    a. Come rendere lo stack non eseguibile? → Read to libc (?)
+    b. Dove l’attaccante mette il codice da usare?
+    c. Come so se ho sovrascritto il codice da usare?
 3. Attacco di Mitnick
-  a. Perchè è importante non far rispondere il server?
-  b. In che altro contesto ci serve capire come cambiamo i casi (?)?
+    a. Perchè è importante non far rispondere il server?
+    b. In che altro contesto ci serve capire come cambiamo i casi (?)?
 
 #### Quarto orale
 
 1. Cosa si intende per privilege escalation?
-  a. In che modo garantiamo che l’utente non faccia cose che non vogliamo?
-  b. Come si esegue un codice con setUID? → Come lo si ottiene
-  c. Chi setta il setUID?
+    a. In che modo garantiamo che l’utente non faccia cose che non vogliamo?
+    b. Come si esegue un codice con setUID? → Come lo si ottiene
+    c. Chi setta il setUID?
 
   d. I rischi legati all’uso
   e. Per cosa usiamo RUID?
@@ -661,3 +622,49 @@ i. Differenze tra i due anonimati?
 3. In che contesto abbiamo visto gpg?
 a. Che cosa ci permette di fare? → Dove reperiamo le chiavi di una persona?
 b. Concetto di trust e validity
+
+## Orali 2025/01/27:
+
+1. (30L)
+- STRIDE; come lo spiegherebbe a un amico che ha appena sviluppato un'app?
+- Come protegge un'app da spoofing? Controindicazioni multi-factor?
+- POW
+- Tutor: Pen testing; qual è la prima operazione? (port scan, cosa fa?)
+
+2. (28)
+- SUID; come lo implementa? se in un programma con suid faccio fork che uid ha il programma forkato?
+- cos'è l'autorizzazione
+- Tutor: XSS
+
+3. (Bocciato) 
+- Auditing; come si chiamano in windows i file di log? problematiche dei file di log? dove vanno? chi fa l'analisi?
+
+- TLS
+
+- TOCTOU
+
+- Tutor: john the ripper; come funziona senza fare bruteforce?
+
+  > #### Risposte 
+  >
+  > 
+
+4.
+- Mitnick Attack su lavagna
+- E2E encryption; protocolli (mtproto, signal); alternativa a DH usata e perchè (i due host nelle app di messaggistica non sono per forza online contemporaneamente)
+- Tutor: TOR
+
+5. (25)
+- Cosa significa approcio risk-based? (risk management)
+- proprietà di un sistema sicuro (le 6)
+- data origin authentication
+- accountability
+- difese da bufferoverflow
+- Tutor: SQL Injection; contromisure; esempio semplice ed esempio complicato
+
+6. (26)
+- Repudiation
+- Firma digitale
+- MAC
+- Integer overflow, perchè succede, come evitarlo, esempio di codice
+- Tutor: come fare uno shell code con buffer overflow se vi è stack/heap non eseguibile

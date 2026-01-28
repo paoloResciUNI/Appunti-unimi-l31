@@ -1,0 +1,97 @@
+APPUNTI TESTO SUI FILE DI LOG
+Cap. 2 (sommario)
+
+Molti log all'interno di un'organizzazione contengono registrazioni relative a eventi di sicurezza informatica che si verificano all'interno di
+sistemi e reti. Ad esempio, la maggior parte delle organizzazioni utilizza diversi tipi di software di sicurezza, come
+software antivirus, firewall e sistemi di prevenzione delle intrusioni, per rilevare attività dannose e proteggere
+sistemi e dati da eventuali danni. Il software di sicurezza è solitamente la fonte primaria dei registri di sicurezza informatica.
+ I sistemi operativi per server, workstation e apparecchiature di rete registrano solitamente una serie di informazioni
+relative alla sicurezza, come eventi di sistema e registrazioni di audit. Un altro tipo comune di generatore di registri è costituito dalle
+applicazioni, che possono inviare informazioni ai registri del sistema operativo o a registri specifici dell'applicazione.
+
+Il numero, il volume e la varietà dei registri di sicurezza informatica sono aumentati notevolmente, creando la
+necessità di una gestione dei registri di sicurezza informatica, ovvero il processo di generazione, trasmissione, archiviazione, analisi
+e smaltimento dei dati dei registri di sicurezza informatica. La gestione dei registri contribuisce a garantire che i dati relativi alla sicurezza informatica
+siano archiviati in modo sufficientemente dettagliato per un periodo di tempo adeguato. L'analisi regolare dei registri è utile
+per identificare incidenti di sicurezza, violazioni delle politiche, attività fraudolente e problemi operativi. I registri
+sono utili anche per stabilire linee guida, eseguire audit e analisi forensi, supportare indagini interne
+e identificare tendenze operative e problemi a lungo termine. Le organizzazioni possono anche archiviare
+e analizzare determinati registri per garantire la conformità con FISMA, HIPAA, GLBA, SOX e altre normative,
+linee guida e standard chiave.
+
+Il problema fondamentale della gestione dei log è quello di bilanciare una quantità limitata di risorse di gestione dei log
+con una fornitura continua di dati di log. La generazione e l'archiviazione dei log è complicata principalmente da un
+numero elevato di fonti di log, formati di log incoerenti tra le fonti e un grande volume di dati di log su
+base giornaliera. La gestione dei log comporta anche la protezione dei log da violazioni della loro riservatezza e
+integrità, nonché il supporto della loro disponibilità. Un altro problema legato alla gestione dei log è quello di far sì che gli
+amministratori di rete e di sistema eseguano analisi regolari, efficienti ed efficaci dei dati di log. Le pratiche chiave
+raccomandate per affrontare le principali sfide nella gestione dei log sono le seguenti:
+
+Dare la giusta priorità alla gestione dei log in tutta l'organizzazione
+Stabilire politiche e procedure per la gestione dei log
+Creare e mantenere un'infrastruttura sicura per la gestione dei log
+Fornire una formazione adeguata a tutto il personale con responsabilità nella gestione dei log.
+
+---
+
+Cap. 3 (sommario)
+Un'infrastruttura di gestione dei log è costituita dall'hardware, dal software, dalle reti e dai supporti utilizzati per
+generare, trasmettere, archiviare, analizzare e smaltire i dati di log. Le infrastrutture di gestione dei log svolgono in genere
+diverse funzioni a supporto dell'analisi degli eventi, quali filtraggio, aggregazione, normalizzazione
+e correlazione. Le infrastrutture forniscono inoltre assistenza nel rendere accessibili i dati di log e nel mantenerli
+attraverso funzioni quali l'analisi, la visualizzazione, l'analisi, la rotazione e l'archiviazione dei log, nonché il controllo dell'integrità dei file di log.
+
+Le infrastrutture di gestione dei log, che in genere si basano su software di registrazione centralizzata basato su syslog
+o su software di gestione delle informazioni e degli eventi di sicurezza, utilizzano solitamente un design a tre livelli. Il
+primo livello comprende gli host che generano i dati di log originali. Il secondo livello include server di log centralizzati,
+ che eseguono il consolidamento e l'archiviazione dei dati. Il terzo livello contiene console utilizzate
+per monitorare e rivedere i dati di log e, facoltativamente, può essere utilizzato anche per gestire i server di log e i client.
+Le comunicazioni tra i livelli avvengono solitamente attraverso le normali reti dell'organizzazione, ma possono anche essere
+instradate attraverso una rete di registrazione separata. Le organizzazioni possono anche avere host che generano log che
+non possono partecipare attivamente all'infrastruttura di gestione dei log, come computer non collegati alla rete,
+ sistemi legacy e dispositivi basati su appliance; gli amministratori possono trasferire manualmente i dati
+all'infrastruttura da questi host tramite supporti rimovibili, oppure gestire e analizzare i dati localmente.
+
+In un'infrastruttura di registrazione centralizzata basata su syslog, ogni generatore di log utilizza lo stesso formato di log standard
+e inoltra le proprie voci di log a un server di log centralizzato. Poiché syslog è un protocollo standard semplice,
+può essere utilizzato da molti sistemi operativi, programmi software di sicurezza e applicazioni. Lo standard syslog originale
+non offre molta granularità nella gestione di diversi tipi di eventi. Inoltre, poiché ha pochi campi di dati,
+può essere molto difficile estrarre il significato dei dati registrati per ogni evento quando più fonti di log
+generano eventi. Syslog è stato sviluppato quando la sicurezza dei log non era una preoccupazione importante; lo standard syslog originale
+non offre alcuna funzionalità per preservare la riservatezza, l'integrità e la disponibilità dei log.
+
+Per migliorare la sicurezza delle implementazioni syslog, è stato creato un nuovo standard proposto che offre
+funzionalità di sicurezza più avanzate e varie implementazioni syslog hanno aggiunto caratteristiche quali la consegna affidabile dei log,
+ la crittografia della trasmissione, la protezione dell'integrità e l'autenticazione, il filtraggio robusto, le
+risposte automatizzate agli eventi, la crittografia dei file di log e la limitazione della frequenza degli eventi. Le organizzazioni che utilizzano syslog dovrebbero prendere in considerazione l'
+utilizzo di implementazioni syslog sicure, prestando particolare attenzione all'interoperabilità, poiché molti client e server syslog
+offrono funzionalità non specificate negli standard attuali.
+
+A differenza delle infrastrutture basate su syslog, che si fondano su un unico standard, il software di gestione delle informazioni e degli eventi di sicurezza
+(SIEM) utilizza principalmente formati di dati proprietari. I prodotti SIEM dispongono di server centralizzati
+che eseguono l'analisi dei log e server di database per l'archiviazione dei log. La maggior parte dei prodotti SIEM richiede l'installazione di agenti su ciascun host che genera log; gli agenti eseguono il filtraggio, l'aggregazione e la
+normalizzazione per un particolare tipo di log. Gli agenti sono anche responsabili del trasferimento dei dati di log dai
+singoli host a un server SIEM centralizzato in tempo reale o quasi reale. Altri prodotti SIEM
+sono senza agenti e si affidano a un server SIEM per estrarre i dati dagli host di registrazione ed eseguire le
+funzioni che normalmente svolgono gli agenti.
+
+I prodotti SIEM supportano solitamente diverse decine di tipi di fonti di log, inclusi formati generici come
+syslog. Poiché i prodotti SIEM comprendono in genere il significato di ciascun campo registrato per formati di log specifici,
+ un'infrastruttura di gestione dei log basata su SIEM è solitamente superiore a un'infrastruttura basata su syslog
+nell'eseguire la normalizzazione, l'analisi e la correlazione dei dati di log provenienti da più fonti.
+I prodotti SIEM possono analizzare dati provenienti da molte fonti, identificare eventi significativi e avviare risposte automatizzate
+se lo si desidera. I prodotti SIEM possono anche includere GUI di analisi, basi di conoscenza sulla sicurezza,
+funzionalità di tracciamento e segnalazione degli incidenti e funzionalità di archiviazione e correlazione delle informazioni sulle risorse. I prodotti SIEM
+offrono solitamente anche funzionalità per proteggere la riservatezza, l'integrità e la disponibilità dei dati di log.
+
+Sebbene il software SIEM offra in genere funzionalità di gestione dei log più robuste e ampie rispetto a syslog,
+il software SIEM è solitamente molto più complicato e costoso da implementare rispetto a un'implementazione syslog centralizzata.
+ Inoltre, il software SIEM richiede spesso più risorse per i singoli host rispetto a syslog
+a causa dell'elaborazione eseguita dagli agenti.
+Oltre al software syslog e SIEM, esistono diversi altri tipi di software che possono essere utili per la
+gestione dei log. I sistemi di rilevamento delle intrusioni basati su host (IDS) monitorano le caratteristiche di un host e
+gli eventi che si verificano al suo interno, che possono includere il sistema operativo, il software di sicurezza e i log delle applicazioni. I prodotti IDS basati su host
+sono spesso parte di un'infrastruttura di gestione dei log, ma non possono sostituire
+il software syslog e SIEM. Altre utilità utili per la gestione dei log includono strumenti di visualizzazione,
+utilità di rotazione dei log e utilità di conversione dei log.
+
