@@ -492,7 +492,7 @@ __Promosso__
 ## Orali 17 Gennaio 2024
 
 ### Orali mattino
-#### Primo orale (Andrea)
+#### Primo orale
 
 1. Come garantire l’integrità dell’informazione?
     a. Cosa vuol dire integrità? → Definizione
@@ -647,9 +647,27 @@ b. Concetto di trust e validity
 
   > #### Risposte 
   >
-  > 
+  > L’auditing è un elemento fondamentale di qualunque sistema, serve per implementare la non repudiabilità. Fa parte delle tre golden rules insieme a accesso e autorizzazione. L’auditing è particolarmente importante perché ci permette di verificare, quando subiamo un attacco, cosa è andato storto, ma non solo. Il sistema di auditing è implementato grazie ai file di log, che vengono generati da vari apparati: 
+  >
+  > - Quelli  relativi ai software di sicurezza (generati dai software antimalware, dai firewall, dagli IDS… )
+  > - Quelli relativi al sistema operativo e alle applicazioni (eventi di importanza relativa per il sistema, record di audit)
+  >
+  > Ogni apparato o applicazione genera file di log in formati differenti, di fatti non esiste nessuna standardizzazione sulla generazione dei file di log e del loro formato. Ci sono delle accortezze importanti per la gestione dei file di log: 
+  >
+  > - Rendere la loro importanza prioritaria 
+  >
+  > - Definire delle policy e delle linee guida sulla loro gestione.
+  >
+  > - Creare e mantenere un’infrastruttura per la gestione dei file di log.
+  >
+  > - Fornire i giusti strumenti al personale che si occupa della gestione dei log.
+  >
+  >   In windows i file di log si possono vedere con *event viwer*, e sono salvati in formato binario. Questo ci fa capire come i file di log siano molto complessi di aggregare e da analizzare. Per questo molte organizzazioni utilizzano un’infrastruttura di gestione dei file di log. Ne esistono di vari tipi, come quelle basate sulla centralizzazione dei syslog, che utilizza syslog come unico formato per i file di log (che salva i file con le diciture: msg type e severity). Un altro esempio di infrastruttura per la gestione dei file di log è la Security Information and Event Managment (agent based e agentless).
+  >
+  > TLS che sta per Transport Layer Security è un protocollo di comunicazione basto su socket sicure (`SOKS`). È il protocollo sul quale è costruito HTTPS e diverse versioni di TLS corrispondono a diverse versioni del browser che le implementa. Per avviare una comunicazione TLS prima deve esser avvenuta una connessione TCP. Innanzitutto il client chiede la connessione TLS con un messaggio di *client_hello*, (handshake layer) dove manda la chiave e tutti i parametri per la comunicazione privata. Il server risponde con i suoi parametri e la sua chiave (da qui in poi la comunicazione viene criptata). Poi c’è la fase di integrità e autenticazione dove il server manderà la il suo certificato   
 
 4.
+
 - Mitnick Attack su lavagna
 - E2E encryption; protocolli (mtproto, signal); alternativa a DH usata e perchè (i due host nelle app di messaggistica non sono per forza online contemporaneamente)
 - Tutor: TOR
