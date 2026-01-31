@@ -10,11 +10,24 @@
 > 
 > subprocess.run(["mkdir", "-p", "/tmp/pwntools-cache"])
 > 
-> context.arch = "x86-64"
+> context.arch = "x86-64" # o anche amd64, cambia poco
 > context.cache_dir = "/tmp/pwntools-cache"
 > ```
 >
-> Questo potrebbe essere necessario per una questione di permessi in con cache di **pwntools**.
+> ###### Questo potrebbe essere necessario per una questione di permessi con la cache di **pwntools**.
+
+> [!TIp]
+>
+> Questa è la documentazione disponibile all’esame:
+>
+> - [**Documentazione dei registri assembly x86-64**](https://web.stanford.edu/class/cs107/resources/x86-64-reference.pdf)
+> - [**Documentazione per le syscall di x86-64**](https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/)
+> - [**Altra documentazione su primitive assembly**](https://www.felixcloutier.com/x86/) (*Non sono sicuro ci sia all’esame*)
+> - **Zeal** per la documentazione di python, C (usare `man`) e bash.
+
+[TOC]
+
+
 
 ## Inject
 
@@ -133,4 +146,98 @@ con:
     add rbx, 0x1337
     mov [0x404000], rbx
 ```
+
+### es11
+
+```assembly
+    mov al, [0x404000]
+    mov bx, [0x404000]
+    mov ecx, [0x404000]
+    mov rdx, [0x404000]
+```
+
+### es12
+
+```assembly
+    mov rax, 0xdeadbeef00001337
+    mov rbx, 0xc0ffee0000
+    mov [rdi], rax
+    mov [rsi], rbx
+```
+
+### es13
+
+```assembly
+    mov rax, [rdi]
+    mov rbx, [rdi+0x8]
+    add rax, rbx
+    mov [rsi], rax
+```
+
+### es14
+
+```assembly
+    pop rax
+    sub rax, rdi
+    push rax
+```
+
+### es15
+
+```assembly
+    push rdi
+    push rsi
+    pop rdi
+    pop rsi
+```
+
+### es16
+
+```assembly
+    add rdx, [rsp+8]
+    add rdx, [rsp+16]
+    add rdx, [rsp+24]
+    add rdx, [rsp]
+    shr rdx, 2 
+    push rdx
+```
+
+> ###### Viene richiesto di fare un avg dei primi 4 numeri nello stak senza usare `pop`, quindi si shifta il risultato della summa di due bit a deste per dividere per 4. 
+
+### es17
+
+```assembly
+    jmp target
+.rept 0x51
+    nop
+.endr
+target:
+    pop rdi
+    mov rax, 0x403000
+    jmp rax
+```
+
+### es18
+
+```
+
+```
+
+### es19
+
+```
+
+```
+
+### es20
+
+
+
+## Process
+
+## sUID
+
+## Memory errors
+
+
 
