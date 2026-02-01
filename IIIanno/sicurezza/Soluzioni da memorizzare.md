@@ -271,7 +271,60 @@ loop:
 
 ## Process
 
-## sUID
+Gli esercizi 50, 51, 52 e 53 sono da svolgere con ipython e `run process.py`.
+
+### es50
+
+```python
+import subprocess
+
+p = subprocess.Popen("/challenge/embryoio_level50", stdin=subprocess.PIPE, text=True)
+s = subprocess.Popen(["sed", ""], stdout=p.stdin, text=True)
+
+p.communicate(s.stdout)
+```
+
+### es51
+
+```python
+import subprocess
+
+p = subprocess.Popen("/challenge/embryoio_level52", stdin=subprocess.PIPE, text=True)
+s = subprocess.Popen("rev", stdout=p.stdin, text=True)
+
+p.communicate(s.stdout)
+```
+
+### es52
+
+```python
+import subprocess
+
+p = subprocess.Popen("/challenge/embryoio_level52", stdin=subprocess.PIPE, text=True)
+s = subprocess.Popen("cat", stdout=p.stdin, text=True)
+
+p.communicate(s.stdout)
+```
+
+### es53
+
+```python
+import subprocess
+
+p = subprocess.Popen("/challenge/embryoio_level53", stdin=subprocess.PIPE, text=True)
+s = subprocess.Popen("rev", stdout=p.stdin, text=True)
+
+p.communicate(s.stdout)
+```
+
+---
+
+### es54
+
+```python
+import subprocess
+subprocess.run("/challenge/embryoio_levelXX")
+```
 
 
 
