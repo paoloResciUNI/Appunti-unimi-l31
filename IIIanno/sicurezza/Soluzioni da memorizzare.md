@@ -326,7 +326,172 @@ import subprocess
 subprocess.run("/challenge/embryoio_levelXX")
 ```
 
+> [!Note]
+>
+> Gli esercizi da qui fino al numero 57 sono tutti uguali cambia solo il comando
 
+`python process.py | cat`
+
+### es55
+
+`python process.py | grep pwn`
+
+### es56
+
+`python process.py | sed ""`
+
+### es57
+
+`python process.py | rev | rev`
+
+### es58
+
+`cat | python process.py `
+
+### es59
+
+`rev | rev | python process.py`
+
+---
+
+### es60
+
+```c
+#include <unistd.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+
+void pwncollege() {
+    if (fork() == 0) {
+        char *args[] = {"/challenge/embryoio_levelXX", NULL};
+        execv(args[0], args);
+    } else {
+        wait(NULL);
+    }  
+}
+
+int main() {
+    pwncollege();
+    return 0;
+}
+```
+
+> [!TIp]
+>
+> Sostanzialmente come prima ma con un file binario. Quindi prima di runnare: `gcc -o file process.c`
+
+`./file | cat`
+
+### es61
+
+`./file | grep pwn`
+
+### es62
+
+`./file | sed ""`
+
+### es63
+
+`./file | rev | rev`
+
+### es64
+
+`cat | ./file`
+
+### es65
+
+`rev | rev | ./file`
+
+### es66
+
+`find /challenge/embryoio_level66 -exec {} \;`
+
+### es67
+
+` find /challenge/embryoio_level67 -exec {} gynpovyfmo \;`
+
+### es68
+
+```bash
+/challenge/embryoio_level68 {1..242} esvbcnultx
+```
+
+`bash porcess.sh`
+
+### es70
+
+```bash
+env -i 322=ccmromnhlp /challenge/embryoio_level70
+```
+
+### es71
+
+```bash
+env -i 102=maxqxjvzuf /challenge/embryoio_level71 {1..99} ukxlildyxt
+```
+
+### es72
+
+```bash
+mkdir /tmp/irzwgw
+cd /tmp/irzwgw
+touch yrpotl
+/challenge/embryoio_level72 < yrpotl
+```
+
+### es73
+
+```bash
+mkdir /tmp/ctlpbl
+env -C /tmp/ctlpbl /challenge/embryoio_level73
+```
+
+### es74
+
+```python
+import subprocess
+
+args = ["/challenge/embryoio_level74"]
+
+for i in range(55):
+    args.append("i")
+
+args.append("bdpmommczr")
+subprocess.run(args)
+```
+
+### es76
+
+```python
+import subprocess
+
+subprocess.run("/challenge/embryoio_level76")
+```
+
+`$ env -i 37=... python process.py`
+
+### es77
+
+```python
+import subprocess
+
+args = []
+
+args.append("/challenge/embryoio_level77")
+
+for i in range(29):
+    args.append("a")
+
+args.append("fbptzfvxdz")
+
+subprocess.run(args)
+```
+
+`env -i 228=extozwtray python process.py`
+
+### es78
+
+d
 
 ## Memory errors
 
