@@ -656,7 +656,13 @@ b. Concetto di trust e validity
 
   > #### Risposte
   >
-  > 
+  > Il `SUID` è uno dei bit speciali del sistema UGO (User-Group-Others), insieme a `SGID` e a `t-bit`. Viene implementato all’interno del Process Control Block dove risiedono tutte le informazioni su: PID, eUID e rUID. Quando il sUID è settato allora il processo viene eseguito con eUID pari a 0 (ovvero root). Un processo con sUID settato ha privilegi molto elevati per questo si vuole spesso exploitare. Quando viene forkato un programma setuidato il figlio eredita tutte le caratteristiche del padre, eccetto il PID, quindi anche eUID (a 0 se sUID settato) e rUID.
+  >
+  > L’autorizzazione è una delle 3 golden rules, con accesso e audit, ed è quel principio che garantisce che un principal, principalmente un utente, all’interno del sistema sia chi dice di essere. Viene implementata tramite password, autenticazione biometrica o autenticazione multifattoriale (domande di sicurezza, dispositivi fisici, OTP…).
+  >
+  > ##### LAB
+  >
+  >  **XSS** è una tecnica di attacco che si occupa di iniettare del codice all’interno di una pagina HTML interattiva. Gli obbiettivi principali del XSS sono: il furto di informazioni sensibili e il furto di cookie di accesso e di sessione. Vi sono tre tipi di attacchi XSS: store-xss (salvato sul server), reflected (ovvero il client lo manda al server sotto forma di richiesta e glielo riflette) e DOM-based (ovvero salvato a livello client). Per contrastare queste contromisure il dev della pagina web dovrebbe utilizzare librerie javascript sicure e sanitizzare gli input dell’utente. 
 
 3. (Bocciato) 
 - Auditing; come si chiamano in windows i file di log? problematiche dei file di log? dove vanno? chi fa l'analisi?
@@ -712,20 +718,76 @@ b. Concetto di trust e validity
 4.
 
 - Mitnick Attack su lavagna
+
 - E2E encryption; protocolli (mtproto, signal); alternativa a DH usata e perchè (i due host nelle app di messaggistica non sono per forza online contemporaneamente)
+
 - Tutor: TOR
+
+  > #### Risposte
+  >
+  > 
 
 5. (25)
 - Cosa significa approcio risk-based? (risk management)
+
 - proprietà di un sistema sicuro (le 6)
+
 - data origin authentication
+
 - accountability
+
 - difese da bufferoverflow
+
 - Tutor: SQL Injection; contromisure; esempio semplice ed esempio complicato
+
+  > #### Risposte
+  >
+  > L’approccio risk-based (se è a questo che si riferisce) è basato sul calcolo del rischio (l’equazione del rischio $R = T·C·V$)  e sul risk managment. Si tengono in considerazioni tutte le minacce e si danno priorità sulle varie componenti del sistema, cosa deve essere protetto assolutamente. Il risk assesment si basa su dati puramente qualitativi, per quanto avere dati quantitativi sarebbe estremamente utile a calcolare meglio il rischi che possono intercorrere nel nostro sistema. Il problema degli approcci qualitativi è che non si basano su dati reali, di fatto nessun azienda importante rivela mai quando è stata attaccata come o cosa hanno attaccato. 
+  >
+  > Un sistema sicuro deve poter garantire 6 proprietà fondamentali:
+  >
+  > - integrità
+  > - disponibilità
+  > - confidenzialità
+  > - autorizzazione
+  > - autenticazione
+  > - accountability
+  >
+  > La data origin autentication è un sistema che permette di attestare l’origine e l’autenticità di un dato o di un software. Per essere implementato può usare MAC (Message Autentication Code), quidni funzioni hash per garantire che l’origine di un dato o di un messaggio siano verificate e che non siano state compromesse. 
+  >
+  > Per difendersi da buffer overflow ci non varie tecniche tra cui: 
+  >
+  > - Stack canry
+  > - Non executable stack
+  > - Stack Shadow
+  > - Randomizzazione dell’esecusione (PIE)
+  > - Randomizzazione della memoria. (ASLR)
+  >
+  > ##### LAB
+  >
+  > Il SQL injection è un tipo di attacco possibile su basi di dati con codice back-end malscritto o senza le dovute accortezze. Il problema principale del SQL injection è la possibilità che utenti malevoli eseguano operazioni non autorizzare sulla base di dati (come `DROP TABLE`). Il modo migliore per contrastare questo tipo di attacco è sanitizzare il codice e utilizzare le pg_prepare nel codice PHP.  
 
 6. (26)
 - Repudiation
+
 - Firma digitale
+
 - MAC
+
 - Integer overflow, perchè succede, come evitarlo, esempio di codice
+
 - Tutor: come fare uno shell code con buffer overflow se vi è stack/heap non eseguibile
+
+  > #### Risposte
+  >
+  > La repudiation avviene quando un utente riesce a negare con successo di aver compiuto un azione, dato l’assenza di prove a sostegno del fatto che esso l’abbia fatto. Un modo per non incombere in queste situazioni è l’implementazione del principio di accountability tramite tecniche di audit. 
+  >
+  > La firma digitale è un altro modo per implementare la non repudiabilità nel proprio sistema. È implementato grazie all’impiego di crittografia asimmetrica, dove abbiamo una chiave di firma e una di verifica. 
+  >
+  > Il Message Autentication Code è una tecnica di verifica dell’integrità di un dato tramite l’implementazione delle firme digitali (grazie a funzioni di hash) il problema principale del MAC è che non garantisce la non repudiabilità. Questo perchè la chiave utilizzata per firmare è di pubblico dominio. 
+  >
+  > L’integer overflow è una vulnerabilità del codice C e di tutte le sue varianti. Avviene principalmente perchè i numeri ad un certo punto fanno wrap around ovvero girano intorno al più grande numero rappresentabile. Per evitarlo un modo può essere utilizzare implementazioni safe dei numeri in C o non usare C ma linguaggi fortemente tipizzati e con un implementazione dei numeri più attenta a questo tipo di vulnerabilità.
+  >
+  > ##### LAB
+  >
+  > Il modo per poter far eseguire uno shellcode con stack non eseguibile è il metodo **return to lib_c**. In pratica si fa saltare il codice in regioni di memoria dove risiede la lib_c e si esegue il codice lì.
