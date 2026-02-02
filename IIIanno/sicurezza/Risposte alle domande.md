@@ -627,14 +627,36 @@ b. Concetto di trust e validity
 
 1. (30L)
 - STRIDE; come lo spiegherebbe a un amico che ha appena sviluppato un'app?
+
 - Come protegge un'app da spoofing? Controindicazioni multi-factor?
+
 - POW
+
 - Tutor: Pen testing; qual è la prima operazione? (port scan, cosa fa?)
+
+  > #### Risposte
+  >
+  > **STRIDE** è l’acronimo per: Spoofing, Tsmpering, Repudiation, Infromartion disclosure, Denial of service, Escaletion of privileges. 
+  > È sostanzialmente una checklist di attacchi molto diffusi e pericolosi, e in un approccio di design di un sistema si fa contro quando questi attacchi possono essere perpetuati e come evitarli. Ad un mio amico spiegherei che l’applicazione sviluppata è “sicura” contro queste sei classi di attacchi molto diffusi.
+  >
+  > Per proteggere un’applicazione dallo **spoofing** (ovvero dall’impersonificazione di un altro utente) si potrebbe implementare un sistema di autenticazione il più efficace possibile. La multifactor authentication è la soluzione “più sicura” ma meno usabile dall’utente che spesso necessita di dispositivi appositi o di passaggi intermedi (come il reperimento e l’inserimento dell’OTP).
+  >
+  > La **POW** è un sistema di valutazione dei blocchi all’interno della block chain nel quale il miner deve invertire una funzione di hash per avere la POW. Questo sistema risulta estremamente costoso, in termini computazionali e quindi anche in termini reali,  per rendere meno attrattivo per i miner “disonesti” pubblicare dei blocchi *farlocchi* in modo da pagare più volte utilizzando la stessa valuta.
+  >
+  > ##### LAB
+  >
+  > Il pen testing è un modo per formalizzare una valutazione del livello di sicurezza di un sistema. Viene spesso fatto da organi esterni e senza documentazione interna relativa al sistema (*black box*, altrimenti è *withe box*). La prima operazione che si vuole fare su un applicativo di rete è il port scanning del server che hosta il servizio. Tramite il port scanning è possibile fare OS fingerprinting e scoprire servizi aperti nelle relative porte.
 
 2. (28)
 - SUID; come lo implementa? se in un programma con suid faccio fork che uid ha il programma forkato?
+
 - cos'è l'autorizzazione
+
 - Tutor: XSS
+
+  > #### Risposte
+  >
+  > 
 
 3. (Bocciato) 
 - Auditing; come si chiamano in windows i file di log? problematiche dei file di log? dove vanno? chi fa l'analisi?
@@ -664,7 +686,28 @@ b. Concetto di trust e validity
   >
   >   In windows i file di log si possono vedere con *event viwer*, e sono salvati in formato binario. Questo ci fa capire come i file di log siano molto complessi di aggregare e da analizzare. Per questo molte organizzazioni utilizzano un’infrastruttura di gestione dei file di log. Ne esistono di vari tipi, come quelle basate sulla centralizzazione dei syslog, che utilizza syslog come unico formato per i file di log (che salva i file con le diciture: msg type e severity). Un altro esempio di infrastruttura per la gestione dei file di log è la Security Information and Event Managment (agent based e agentless).
   >
-  > TLS che sta per Transport Layer Security è un protocollo di comunicazione basto su socket sicure (`SOKS`). È il protocollo sul quale è costruito HTTPS e diverse versioni di TLS corrispondono a diverse versioni del browser che le implementa. Per avviare una comunicazione TLS prima deve esser avvenuta una connessione TCP. Innanzitutto il client chiede la connessione TLS con un messaggio di *client_hello*, (handshake layer) dove manda la chiave e tutti i parametri per la comunicazione privata. Il server risponde con i suoi parametri e la sua chiave (da qui in poi la comunicazione viene criptata). Poi c’è la fase di integrità e autenticazione dove il server manderà la il suo certificato   
+  > TLS che sta per Transport Layer Security è un protocollo di comunicazione basto su socket sicure (`SOKS`). È il protocollo sul quale è costruito HTTPS e, per utilizzare una specifica versione di TLS bisogna che la versione del browser sia compatibile con quella versione. Per avviare una comunicazione TLS prima deve esser avvenuta una connessione TCP. Innanzitutto il client chiede la connessione TLS con un messaggio di *client_hello*, (handshake layer) dove manda la chiave e tutti i parametri per la comunicazione privata. Il server risponde (messaggio *server hello*) con i suoi parametri e la sua chiave (da qui in poi la comunicazione viene criptata). Poi c’è la fase di integrità e autenticazione dove il server manderà la il suo certificato da far verificare al client. 
+  >
+  > **TOCTOU**, che sta per Time Of Check Time Of Use è un tipo di attacco che sfrutta la race condition (una “gara” che i processi fanno per la stessa risorsa **nello stesso momento** e dove l’ordine di accesso cambia il risultato di quella risorsa). È un attacco che exploita una vulnerabilità di un sistema (o di un software) sul controllo di accesso alle risorse e sui permessi garantiti su di esse. 
+  > A lezione è stato visto il seguente programma vulnerabile:
+  >
+  > ``` c
+  > if (!access("/tmp/XYZ", W_OK)) {
+  >     // tempo per la race 
+  >     f = open("/tmp/XYZ", O_RDWR);
+  >     write_to_file(f);
+  > } else {
+  >     fprint(stderr, "errore");
+  > }
+  > ```
+  >
+  > In questo programma la race condition può avvenire tra la access (che controlla solo il real user ID) e la open (che controlla l’effective UID).
+  > A lezione è stato mostrato un programma di attacco che softlinka due volte `/tmp/XYZ` prima con `/dev/null` e poi con `/etc/passwd`. Questo programma viene fatto girare in loop in maniera concorrente al programma visto in precedenza. Dopo vari tentativi è possibile che i controlli fatti ci permettano di aprire il file  `/etc/passwd` (normalmente accessibile solo da root) e di modificarlo. La finestra tra la access e la open è l’intervallo TOCTOU. Per rendere questa finestra più efficace si possono far eseguire più programmi di attacco in parallelo (che rallenteranno la cpu).
+  >
+  > ##### LAB
+  >
+  > **John the ripper** è un diffuso strumento di password craking che si occupa anche, attraverso varie euristiche e parametri, di invertire funzioni di hash. Ci sono varie modalità che john the ripper puù applicare: singola (nel quale tenta con varie informazioni dell’utente), wordlist (ovvero passandogli una lista di parole lui prova a vedere se l’hash corrisponde), incrementale (ovvero bruteforce, ci prova fino a che non ci riesce), **Rainbow taibles** (metodo senza utilizzare brute force) e metodi esterni.
+  > Le rainbow taible non sono altro che database precompilati di hash. vengono fatti passare vari dizionari e parole in una funzione di hash e il risultato viene mappato nel database. Le rainbow taible rendono gli attacchi di password craking molto più facili dato che l’attaccante non ha bisogno di calcolare gli hash delle password, ma controlla semplicemente se l’hash è presente nel DB. Il problema principale delle rainbow table è che possono arrivare a pesare anche svariate centinaia di GB. 
 
 4.
 
